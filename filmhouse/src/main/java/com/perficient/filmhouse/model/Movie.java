@@ -17,6 +17,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.AccessMode;
 
 @Entity
 public class Movie {
@@ -24,7 +25,7 @@ public class Movie {
 	 @GeneratedValue(strategy = GenerationType.AUTO)
     
 	@Column(nullable = false, updatable = false)
-	@Schema( required = true )
+	@Schema(accessMode = AccessMode.READ_ONLY)
 	private Long movieId;
 	@Column
 	@Schema(example = "Iron Man", required = true)
@@ -49,7 +50,7 @@ public class Movie {
 	
 	@Column(updatable = false)
 	@CreationTimestamp
-	@Schema(example = "2016-08-29T09:12:33.001Z", required = false)
+	@Schema(accessMode = AccessMode.READ_ONLY)
 	private Timestamp createdDate;
 
 	public Movie() {

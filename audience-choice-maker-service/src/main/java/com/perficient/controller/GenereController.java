@@ -74,7 +74,7 @@ public class GenereController {
 		List<Movie> moviesList = null;
 		for (Long movieId : movieIds) {
 
-			Movie movie = restTemplate.getForObject("http://localhost:8083/filmhouse/movie/" + movieId, Movie.class);
+			Movie movie = restTemplate.getForObject("http://FILM-HOUSE-SERVICE/filmhouse/movie/" + movieId, Movie.class);
 			moviesList = Collections.singletonList(movie);
 		}
 

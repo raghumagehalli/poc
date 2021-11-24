@@ -2,11 +2,12 @@ package com.perficient.filmhouse.service;
 
 import java.util.List;
 
+import com.perficient.filmhouse.dto.Movies;
 import com.perficient.filmhouse.model.Movie;
 
 public interface MovieService {
 
-	public List<Movie> getAllMovies();
+	public Movies getAllMovies();
 
 	public Movie getMovie(Long movieId);
 

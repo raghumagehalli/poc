@@ -3,12 +3,12 @@ package com.perficient.filmhouse.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.perficient.filmhouse.dao.MovieDAO;
+import com.perficient.filmhouse.dto.Movies;
 import com.perficient.filmhouse.exception.MovieNotFoundException;
 import com.perficient.filmhouse.model.Movie;
 
@@ -19,10 +19,11 @@ public class MovieServiceImpl implements MovieService {
 	List<Movie> movies = null;
 
 	@Override
-	public List<Movie> getAllMovies() {
+	public Movies getAllMovies() {
 		movies = new ArrayList<Movie>();
 		movieDao.findAll().forEach(movies::add);
-		return movies;
+
+		return new Movies(movies);
 	}
 
 	@Override

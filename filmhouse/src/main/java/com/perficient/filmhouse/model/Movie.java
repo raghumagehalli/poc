@@ -52,9 +52,24 @@ public class Movie {
 	@CreationTimestamp
 	@Schema(accessMode = AccessMode.READ_ONLY)
 	private Timestamp createdDate;
+	
+	@Column
+	@Schema(example = "Action/Adventure", required = true)
+	private String genere;
 
 	public Movie() {
 	}
+	
+	public String getGenere() {
+		return genere;
+	}
+
+
+
+	public void setGenere(String genere) {
+		this.genere = genere;
+	}
+
 
 	public Long getMovieId() {
 		return movieId;

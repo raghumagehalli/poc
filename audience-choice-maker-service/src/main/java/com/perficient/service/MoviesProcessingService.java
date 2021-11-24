@@ -27,7 +27,7 @@ public class MoviesProcessingService {
 
 	{
 
-		Movies movies = restTemplate.getForObject("http://localhost:8081/filmhouse/movies", Movies.class);
+		Movies movies = restTemplate.getForObject("http://FILM-HOUSE-SERVICE/filmhouse/movies", Movies.class);
 		if(movies != null)
 		{
 			movies.getMovies().stream().forEach(movie -> {

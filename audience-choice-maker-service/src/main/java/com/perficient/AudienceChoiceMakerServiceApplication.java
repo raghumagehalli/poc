@@ -2,6 +2,8 @@ package com.perficient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +19,7 @@ import io.swagger.v3.oas.annotations.info.License;
 @EnableScheduling
 @EnableHystrix
 @EnableHystrixDashboard
+@EnableEurekaClient
 @OpenAPIDefinition
 (info = @Info(title = "AudienceChoice", version = "v1", description = "APIs for recording and processing audience choice", 
 license = @License(name = "Open Api 3.0", url = "http://foo.bar"),
@@ -24,6 +27,7 @@ contact = @Contact(url = "https://www.perficient.com/", name = "Raghu Magehalli 
 public class AudienceChoiceMakerServiceApplication {
 
 	@Bean
+	@LoadBalanced
 	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 

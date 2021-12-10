@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -15,6 +16,7 @@ import com.perficient.dao.MovieDAO;
 import com.perficient.model.Movie;
 
 @Service
+@RefreshScope
 public class KafkaProducerService {
 
 	@Autowired
@@ -22,9 +24,12 @@ public class KafkaProducerService {
 	private String topicName = "my_demo_topic";
 	@Autowired
 	private KafkaTemplate<String, Object> template;
+	@Value("${my.greeting}")
+	private String greet;
 
 	@Scheduled(fixedDelay = 60000)
 	private void produceToKafka() {
+		System.out.println("greet"+greet);
 		List<Movie> movies = getMovies();
 
 		for (Movie movie : movies) {

@@ -1,0 +1,24 @@
+package com.perficient.cucumber;
+
+import io.cucumber.java.DefaultDataTableCellTransformer;
+import io.cucumber.java.DefaultDataTableEntryTransformer;
+import io.cucumber.java.DefaultParameterTransformer;
+import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.lang.reflect.Type;
+
+public class CucumberConfiguration {
+
+    private final ObjectMapper objectMapper;
+
+    public CucumberConfiguration() {
+        objectMapper = new ObjectMapper();
+    }
+
+    @DefaultDataTableCellTransformer
+    @DefaultDataTableEntryTransformer
+    @DefaultParameterTransformer
+    public Object transform(final Object from, final Type to) {
+        return objectMapper.convertValue(from, objectMapper.constructType(to));
+    }
+}

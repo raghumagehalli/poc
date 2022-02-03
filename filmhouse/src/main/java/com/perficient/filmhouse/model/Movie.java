@@ -22,8 +22,8 @@ import io.swagger.v3.oas.annotations.media.Schema.AccessMode;
 @Entity
 public class Movie {
 	@Id
-	 @GeneratedValue(strategy = GenerationType.AUTO)
-    
+	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	@Column(nullable = false, updatable = false)
 	@Schema(accessMode = AccessMode.READ_ONLY)
 	private Long movieId;
@@ -47,29 +47,26 @@ public class Movie {
 	@Column
 	@Schema(example = "2008", required = true)
 	private String yearOfRelease;
-	
+
 	@Column(updatable = false)
 	@CreationTimestamp
 	@Schema(accessMode = AccessMode.READ_ONLY)
 	private Timestamp createdDate;
-	
+
 	@Column
 	@Schema(example = "Action/Adventure", required = true)
 	private String genere;
 
 	public Movie() {
 	}
-	
+
 	public String getGenere() {
 		return genere;
 	}
 
-
-
 	public void setGenere(String genere) {
 		this.genere = genere;
 	}
-
 
 	public Long getMovieId() {
 		return movieId;

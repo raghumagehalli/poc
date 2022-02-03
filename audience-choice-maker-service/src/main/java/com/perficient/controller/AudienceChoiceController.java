@@ -1,7 +1,5 @@
 package com.perficient.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,8 +43,8 @@ public class AudienceChoiceController {
 		if (choice.getDoYouLike().equalsIgnoreCase("Yes"))
 			choice.setLikes(choice.getLikes() + 1);
 		else
-		choice.setDislikes(choice.getDislikes() + 1);
-		
+			choice.setDislikes(choice.getDislikes() + 1);
+
 		repository.save(choice);
 		return new ResponseEntity<>("Well Done", HttpStatus.OK);
 

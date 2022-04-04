@@ -1,2 +1,7 @@
-package PACKAGE_NAME;public interface Interf2 {
+public interface Interf2 {
+
+    public default void disaplay1()
+    {
+
+    }
 }
